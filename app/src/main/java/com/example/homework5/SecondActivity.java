@@ -70,19 +70,30 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.button4: // Green
                 myCanvas.setColor(Color.GREEN);
                 break;
-            case R.id.button5:
+            case R.id.button5: // Undo
+                myCanvas.undo();
                 break;
-            case R.id.button6:
+            case R.id.button6: // Clear
+                myCanvas.clear();
                 break;
             case R.id.button7: // Done
                 //finishActivity(0);
-                startActivity(new Intent(this, MainActivity.class));
+                //startActivity(new Intent(this, MainActivity.class));
+                finish();
                 break;
         }
     }
 
     public MyCanvas getMyCanvas() {
         return myCanvas;
+    }
+
+    public void onDoubleTap(float x, float y) {
+        myCanvas.addIcon(x, y, "star");
+    }
+
+    public void onLongPress(float x, float y) {
+        myCanvas.addIcon(x, y, "hokie");
     }
 
 
