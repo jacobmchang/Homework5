@@ -1,5 +1,6 @@
 package com.example.homework5;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -31,8 +32,19 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_canvas);
 
         myCanvas = (MyCanvas) findViewById(R.id.myCanvas);
-        touchListener = new TouchListener(this);
-        myCanvas.setOnTouchListener(touchListener);
+
+        red = (Button) findViewById(R.id.button2);
+        blue = (Button) findViewById(R.id.button3);
+        green = (Button) findViewById(R.id.button4);
+        undo = (Button) findViewById(R.id.button5);
+        clear = (Button) findViewById(R.id.button6);
+        done = (Button) findViewById(R.id.button7);
+        red.setOnClickListener(this);
+        blue.setOnClickListener(this);
+        green.setOnClickListener(this);
+        undo.setOnClickListener(this);
+        clear.setOnClickListener(this);
+        done.setOnClickListener(this);
 
         //Bundle extras = getIntent().getExtras();
         //Bitmap thumbnail = (Bitmap) extras.get("data");
@@ -41,6 +53,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         //System.out.println(extras);
         myCanvas.setBackground(new BitmapDrawable(getResources(), thumbnail));
         //myCanvas.setBackgroundColor(Color.BLUE);
+
+        touchListener = new TouchListener(this);
+        myCanvas.setOnTouchListener(touchListener);
     }
 
     @Override
@@ -60,9 +75,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.button6:
                 break;
             case R.id.button7: // Done
-                finishActivity(0);
+                //finishActivity(0);
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
+    }
+
+    public MyCanvas getMyCanvas() {
+        return myCanvas;
     }
 
 
