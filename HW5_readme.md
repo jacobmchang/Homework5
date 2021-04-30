@@ -11,12 +11,9 @@
 - [X] (10pts) Submission follows the guidelines, and README file is complete
 
 ### App Walkthough GIF
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="https://github.com/jacobmchang/Homework5/blob/master/homework5.gif" width=250><br>
 
 ### Notes
-Describe any challenges encountered while building the app.
+I struggled with undoing the icons and adding the icons. The drawing was easy to implement
 
 ### Open-source libraries used
-
-- [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
-- [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Androids
