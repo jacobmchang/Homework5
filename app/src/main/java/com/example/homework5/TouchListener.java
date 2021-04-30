@@ -52,7 +52,7 @@ public class TouchListener implements View.OnTouchListener {
         @Override
         public boolean onDoubleTap(MotionEvent e) {
             mainActivity.onDoubleTap(e.getX(), e.getY());
-            System.out.println("double tap");
+            //System.out.println("double tap");
             return super.onDoubleTap(e);
         }
 

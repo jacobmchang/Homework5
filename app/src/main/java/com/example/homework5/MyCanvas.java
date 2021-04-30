@@ -30,6 +30,9 @@ public class MyCanvas extends View {
     Bitmap hokie;
     Bitmap star;
 
+    boolean isDrawing;
+    //ArrayList<Integer> isDrawing;
+
     public MyCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -45,8 +48,11 @@ public class MyCanvas extends View {
 
         color = Color.RED;
 
-        hokie = BitmapFactory.decodeResource(getResources(), R.drawable.hokie1);
-        star = BitmapFactory.decodeResource(getResources(), R.drawable.star1);
+        hokie = BitmapFactory.decodeResource(getResources(), R.drawable.hokie);
+        star = BitmapFactory.decodeResource(getResources(), R.drawable.star);
+
+        isDrawing = true;
+        //isDrawing = new ArrayList<>();
     }
 
     /**
@@ -91,6 +97,7 @@ public class MyCanvas extends View {
     }
 
     public void addPath(int id, float x, float y) {
+
         Path path = new Path();
         pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         pathPaint.setColor(color);
@@ -105,6 +112,8 @@ public class MyCanvas extends View {
     }
 
     public void updatePath(int id, float x, float y) {
+        isDrawing = true;
+
         Path path = activePaths.get(id);
         if(path != null){
             path.lineTo(x, y);
@@ -113,8 +122,16 @@ public class MyCanvas extends View {
     }
 
     public void undo() {
-        paths.remove(paths.size() - 1);
-        paints.remove(paints.size() - 1);
+        int psize = paths.size();
+        int iconsize = icons.size();
+        if (isDrawing && psize > 0) {
+            paths.remove(psize - 1);
+            paints.remove(psize - 1);
+        } else if (!isDrawing && iconsize > 0) {
+            icons.remove(iconsize - 1);
+            xLocations.remove(iconsize - 1);
+            yLocations.remove(iconsize - 1);
+        }
         invalidate();
     }
 
@@ -124,12 +141,18 @@ public class MyCanvas extends View {
     public void clear() {
         paths = new ArrayList<>();
         paints = new ArrayList<>();
+        icons = new ArrayList<>();
+        xLocations = new ArrayList<>();
+        yLocations = new ArrayList<>();
+        isDrawing = true;
         invalidate();
     }
 
     public void addIcon(float x, float y, String name) {
         icons.add(name);
-        xLocations.add((int)x);
-        yLocations.add((int)y);
+        xLocations.add( (int) x);
+        yLocations.add( (int) y);
+
+        isDrawing = false;
     }
 }

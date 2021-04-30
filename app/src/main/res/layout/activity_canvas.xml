@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button5"
         android:layout_toLeftOf="@+id/button3"
+        android:background="@color/red"
         android:text="Red" />
 
     <Button
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button6"
         android:layout_centerHorizontal="true"
+        android:background="@color/blue"
         android:text="Blue" />
 
     <Button
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/button3"
         android:layout_above="@+id/button7"
+        android:background="@color/green"
         android:text="Green" />
 
     <Button
